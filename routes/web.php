@@ -57,15 +57,15 @@ Route::get('/about', 'homeController@about');
 Route::get('/blog', 'homeController@blog');
 Route::get('/blog_single', 'homeController@blog_single');
 Route::get('/about', 'homeController@about');
+Route::get('/contact', 'homeController@contact');
+//contact
+Route::post("/contact", "contactController@store");
+Route::post('/send-mail', 'contactController@sendMail');
+
 Route::get('/movie_booking', 'homeController@movie_booking');
 Route::get('/movie', 'homeController@movie');
 Route::get('/movie/{id}', 'homeController@movie_single');
 //dat ve ghe
 Route::get('/seat_booking', 'homeController@seat_booking');
-// Route::get('/courses/{id}', 'homeController@coursesByID');
-// Route::get('/course-intro', 'homeController@courseintro');
-// Route::get('/course-lesson', 'homeController@courselesson');
-// Route::get('/book', 'homeController@book');
-// Route::get('/episode', 'homeController@episode');
-// Route::get('/course-path', 'homeController@coursepath');
-// Route::get('/blog-1', 'homeController@blog');
+
+//Route::resource('screen', screenController::class);

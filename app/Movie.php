@@ -15,4 +15,8 @@ class Movie extends Model
         return $this->belongsTo(Category::class,'id_category','id')
             ->select(['id','name']);
     }
+    public function screens(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Screen::class, 'id_movie', 'id');
+    }
 }

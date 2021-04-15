@@ -395,7 +395,7 @@
 								<div class="prs_upcom_movie_img_overlay"></div>
 								<div class="prs_upcom_movie_img_btn_wrapper">
 									<ul>
-										<li><a href="#">View Trailer</a>
+										<li><a href="#">Xem Trailer</a>
 										</li>
 										<li><a href="{{URL::to('/movie/'.$item->id)}}"> Xem chi tiết</a>
 										</li>
@@ -439,42 +439,42 @@
 						<h2>Các đối tác</h2>
 					</div>
 				</div>
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="prs_pn_slider_wraper">
-						<div class="owl-carousel owl-theme">
-							<div class="item">
-								<div class="prs_pn_img_wrapper">
-									<img src="images/content/p1.jpg" alt="patner_img">
-								</div>
-							</div>
-							<div class="item">
-								<div class="prs_pn_img_wrapper">
-									<img src="images/content/p2.jpg" alt="patner_img">
-								</div>
-							</div>
-							<div class="item">
-								<div class="prs_pn_img_wrapper">
-									<img src="images/content/p3.jpg" alt="patner_img">
-								</div>
-							</div>
-							<div class="item">
-								<div class="prs_pn_img_wrapper">
-									<img src="images/content/p4.jpg" alt="patner_img">
-								</div>
-							</div>
-							<div class="item">
-								<div class="prs_pn_img_wrapper">
-									<img src="images/content/p5.jpg" alt="patner_img">
-								</div>
-							</div>
-							<div class="item">
-								<div class="prs_pn_img_wrapper">
-									<img src="images/content/p6.jpg" alt="patner_img">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+{{--				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+{{--					<div class="prs_pn_slider_wraper">--}}
+{{--						<div class="owl-carousel owl-theme">--}}
+{{--							<div class="item">--}}
+{{--								<div class="prs_pn_img_wrapper">--}}
+{{--									<img src="images/content/p1.jpg" alt="patner_img">--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--							<div class="item">--}}
+{{--								<div class="prs_pn_img_wrapper">--}}
+{{--									<img src="images/content/p2.jpg" alt="patner_img">--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--							<div class="item">--}}
+{{--								<div class="prs_pn_img_wrapper">--}}
+{{--									<img src="images/content/p3.jpg" alt="patner_img">--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--							<div class="item">--}}
+{{--								<div class="prs_pn_img_wrapper">--}}
+{{--									<img src="images/content/p4.jpg" alt="patner_img">--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--							<div class="item">--}}
+{{--								<div class="prs_pn_img_wrapper">--}}
+{{--									<img src="images/content/p5.jpg" alt="patner_img">--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--							<div class="item">--}}
+{{--								<div class="prs_pn_img_wrapper">--}}
+{{--									<img src="images/content/p6.jpg" alt="patner_img">--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--					</div>--}}
+{{--				</div>--}}
 			</div>
 		</div>
 	</div>

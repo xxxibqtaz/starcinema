@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Category;
 
 use App\Movie;
+use App\Screen;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -24,6 +25,10 @@ class homeController extends Controller
     {
         return view('client/about');
     }
+    public function contact()
+    {
+        return view('client/contact');
+    }
     public function blog()
     {
         return view('client/blog_category');
@@ -32,28 +37,24 @@ class homeController extends Controller
     {
         return view('client/blog_single');
     }
-    ////
     public function movie_booking()
     {
-        return view('client/movie_booking');
+//        $room = Room::all();
+        $category = Category::all();
+        return view('client/movie_booking', ['category'=>$category]);
     }
-    // list danh sach cac movie
     public function movie()
-
     {
         $category = Category::all();
         $movie = Movie::all();
-        return view('client/movie_category', ['category'=>$category, 'movie' => $movie]);
+        return view('client/movie_category', ['category'=>$category, 'movie'=>$movie]);
     }
-    //movie chi tiet
     public function movie_single($id)
     {
         $movie = Movie::find($id);
         $movie_relative = Movie::all()->where('id_category',$movie['id_category']);
         return view('client/movie_single_second', ['movie' => $movie, 'movie_relative' => $movie_relative]);
     }
-
-    // seat booking
     public function seat_booking()
     {
         return view('client/seat_booking');
