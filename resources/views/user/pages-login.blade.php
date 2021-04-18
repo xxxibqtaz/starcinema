@@ -36,12 +36,12 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    {{-- <?php echo Form::open(['url' => '/validation']); ?> --}}
+    {{--  --}}
     <section id="wrapper">
         <div class="login-register" style="background-image:url(../backend/images/background/login-register.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="" method="POST">
+                    <form class="form-horizontal form-material" id="loginform" action="" method="POST" id="fromdk">
                         @csrf
                         <h3 class="box-title m-b-20">Đăng nhập</h3>
                         <div class="form-group ">
@@ -134,7 +134,34 @@
     <!-- ============================================================== -->
     <script src="../backend/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script >
 
+        $(document).ready(function() {
+
+            //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+            $("#fromdk").validate({
+                        rules: {
+                            user: "required",
+
+                            password: {
+                                required: true,
+                                minlength: 5
+                            },
+
+                        },
+                        messages: {
+
+                            user: "Vui lòng nhập tên",
+
+                            password: {
+                                required: 'Vui lòng nhập mật khẩu',
+                                minlength: 'Vui lòng nhập ít nhất 5 kí tự'
+                            },
+                        }
+
+                    });
+                });
+        </script>
 </body>
 
 </html>

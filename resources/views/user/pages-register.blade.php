@@ -29,7 +29,13 @@
 
 
 </head>
-
+<style>
+    label.error {
+		display: inline-block;
+		color:red;
+		width: 200px;
+	}
+</style>
 
 <body>
 
@@ -43,7 +49,7 @@
             <div class="mb-4 uk-text-center">
                 <h3 class="mb-0"> Tạo tài khoản mới</h3>
             </div>
-            <form class="uk-child-width-1-1 uk-grid-small" action="signup" method="POST" uk-grid enctype="multipart/form-data">
+            <form class="uk-child-width-1-1 uk-grid-small" action="signup" method="POST" uk-grid enctype="multipart/form-data" id="formdk">
                 @csrf
                 <div>
                     <div class="uk-form-group">
@@ -81,7 +87,7 @@
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-user"></i>
                                 </span>
-                            <input class="uk-input" type="text" name="user" placeholder="blablabla">
+                            <input class="uk-input" type="text" name="user" placeholder="blablabla" required>
                         </div>
 
                     </div>
@@ -211,6 +217,67 @@
 <script src="{{asset('frontend/js/simplebar.js')}}"></script>
 <script src="{{asset('frontend/js/main.js')}}"></script>
 <script src="{{asset('frontend/js/bootstrap-select.min.js')}}"></script>
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		//Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+		$("#formdk").validate({
+					rules: {
+						name: "required",
+
+						user: "required",
+						address: {
+							required: true,
+							minlength: 2
+						},
+						phone: {
+							required: true,
+
+							length: 10,
+
+						},
+						pass: {
+							required: true,
+							minlength: 5
+						},
+
+						email: {
+							required: true,
+							email: true
+						},
+
+					},
+					messages: {
+						name: "Vui lòng nhập họ tên",
+						user: "Vui lòng nhập tên đăng nhập",
+
+						address: {
+							required: "Vui lòng nhập địa chỉ",
+							minlength: "Địa chỉ ngắn vậy, chém gió ah?"
+						},
+						phone: {
+							required: "Vui lòng nhập số điện thoại",
+							minlength: "Số máy quý khách vừa nhập là số không có thực"
+						},
+						pass: {
+							required: 'Vui lòng nhập mật khẩu',
+							minlength: 'Vui lòng nhập ít nhất 5 kí tự'
+						},
+
+						email: {
+							required: "Vui lòng nhập Email",
+							minlength: "Vui lòng nhập ít nhất 5 kí tự",
+						},
+
+					}
+				});
+	});
+	</script>
+
+</head>
 
 </body>
 
