@@ -59,4 +59,10 @@ class homeController extends Controller
     {
         return view('client/seat_booking');
     }
+    public function searchMovie( Request $request)
+    {
+        $keywords = $request->keywords_submit;
+        $search_pro= Movie::where('name','LIKE','%'.$keywords.'%')->get();
+        return view('client/search',['search_pro'=> $search_pro]);
+    }
 }

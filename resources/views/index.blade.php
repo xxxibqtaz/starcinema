@@ -151,9 +151,17 @@ Author: Webstrot
 							<option>Music</option>
 							<option>TV-Show</option>
 						</select>
-						<input type="text" placeholder="Tìm kiếm ...">
+                        <div>
+                            <form action="{{URL::to('/search')}}" method="POST">
+                                @csrf
+                            <input type="text" name="keywords_submit" placeholder="Tìm kiếm">
+                            <button type="submit" name= search_items value="tìm kiếm"><i class="fa fa-search" ></i>
+
+                            </form>
+                        </div>
+						{{-- <input type="text" placeholder="Tìm  ...">
 						<button type="submit"><i class="flaticon-tool"></i>
-						</button>
+						</button> --}}
 					</div>
 				</div>
 			</div>

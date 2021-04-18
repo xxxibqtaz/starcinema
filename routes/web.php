@@ -58,6 +58,7 @@ Route::get('/blog', 'homeController@blog');
 Route::get('/blog_single', 'homeController@blog_single');
 Route::get('/about', 'homeController@about');
 Route::get('/contact', 'homeController@contact');
+Route::post('/search', 'homeController@searchMovie');
 //contact
 Route::post("/contact", "contactController@store");
 Route::post('/send-mail', 'contactController@sendMail');
