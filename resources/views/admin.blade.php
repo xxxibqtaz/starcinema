@@ -206,6 +206,8 @@
 <script src="{{asset('/backend/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
 <!-- dropify -->
 <script src="{{asset('/backend/plugins/dropify/dist/js/dropify.min.js')}}"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+</head>
 <script>
     $(document).ready(function () {
         // Basic
@@ -303,6 +305,33 @@
             $('#src').attr('src', $(this).val());
         });
     });
+</script>
+{{-- vacation  --}}
+<script>
+$(document).ready(function() {
+
+    //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+    $("#formvaca").validate({
+        rules: {
+            name: "required",
+            id_category:"required",
+            trailer:"required",
+            duration:"required",
+            release_date:"required",
+            description:"required"
+
+        },
+        messages: {
+          name: "Vui lòng không bỏ trống",
+          id_category: "Vui lòng không bỏ trống",
+          trailer: "Vui lòng không bỏ trống",
+          duration: "Vui lòng không bỏ trống",
+          release_date: "Vui lòng không bỏ trống",
+          description: "Vui lòng không bỏ trống"
+
+        }
+    });
+});
 </script>
 </body>
 

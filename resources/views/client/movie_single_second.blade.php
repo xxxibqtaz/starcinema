@@ -133,7 +133,7 @@
 				<div class="st_slider_rating_btn prs_animate_btn1">
 					<ul>
 						<li data-animation="animated fadeInUp"><a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
-										</li>
+								</li>
 					</ul>
 				</div>
 				<div class="st_slider_rating_btn_heart">
@@ -151,44 +151,13 @@
 				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 					<div class="st_indx_slider_main_container float_left">
 						<div class="row">
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="ne_busness_main_slider_wrapper float_left">
-											<div class="ne_recent_heading_main_wrapper ne_recent_heading_main_wrapper_index_II float_left">
-												<h2>TRENDING STORIES</h2>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="images/content/md1.png" alt="img">
-											<p><a href="#">Aquaman: Film Review - Makes A Refreshing Spl...</a>
-											</p>	<span>14 December</span>
-										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="images/content/md2.png" alt="img">
-											<p><a href="#">Here's Proof That the Hype Is Real for James ...</a>
-											</p>	<span>25 December</span>
-										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="images/content/md3.png" alt="img">
-											<p><a href="#">The Epic Cast of Aquaman Will Definitely Make...</a>
-											</p>	<span>28 December</span>
-										</div>
-									</div>
-								</div>
-							</div>
+
 							<div class="col-md-12">
 								<div class="prs_upcome_tabs_wrapper prs_upcome_tabs_wrapper_mss float_left">
 									<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Summary</a>
+							<li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Mô Tả</a>
 							</li>
-							<li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Behind The Scenes</a>
+							<li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Bình Luận</a>
 							</li>
 						</ul>
 								</div>
@@ -204,130 +173,17 @@
 
 												</div>
 											</div>
-											<div class="col-md-12">
-												<div class="st_md_summ_client_slider float_left">
-													<p>CAST</p>
-													<div class="owl-carousel owl-theme">
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c1.jpg" alt="img">
-																<h4><a href="#">Jason Momoa</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c2.jpg" alt="img">
-																<h4><a href="#">Nicole Kidman</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c3.jpg" alt="img">
-																<h4><a href="#">Willem Dafoe</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c4.jpg" alt="img">
-																<h4><a href="#">Amber Heard</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="st_md_summ_client_slider float_left">
-													<p>Crew</p>
-													<div class="owl-carousel owl-theme">
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c5.jpg" alt="img">
-																<h4><a href="#">James Wan.</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c6.jpg" alt="img">
-																<h4><a href="#">Peter Safran</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c7.jpg" alt="img">
-																<h4><a href="#">Rob Cowan</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="images/content/c8.jpg" alt="img">
-																<h4><a href="#">Geoff Johns</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+
 										</div>
 									</div>
 									<div id="menu2" class="tab-pane fade">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="images/content/movie_single/sc1.jpg" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="images/content/movie_single/sc1.jpg" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
+                                                    <div class="fb-comments" data-href="{{URL::to('./movie/$movie->id')}}" data-width="" data-numposts="3"></div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="images/content/movie_single/sc2.jpg" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="images/content/movie_single/sc2.jpg" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="images/content/movie_single/sc3.jpg" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="images/content/movie_single/sc3.jpg" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="images/content/movie_single/sc4.jpg" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="images/content/movie_single/sc4.jpg" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="images/content/movie_single/sc5.jpg" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="images/content/movie_single/sc5.jpg" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="images/content/movie_single/sc6.jpg" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="images/content/movie_single/sc6.jpg" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
@@ -335,45 +191,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-					<div class="st_ind_sidebar_right_wrapper float_left">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="st_ind_sidebar_md_textbox float_left">
-									<p>Highest grossing movie in Mumbai in last 24 hours</p>	<a href="#">Know Box Office Report</a>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="st_ind_sidebar_md_textbox_btn float_left">
-									<ul>
-										<li>	<a href="#">Corporate booking &nbsp; <i class="fas fa-long-arrow-alt-right"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="st_ind_sidebar_advertiz st_ind_sidebar_advertiz_md float_left">
-									<a href="#">
-										<img src="images/index_III/add.png" alt="img">
-									</a>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="st_ind_sidebar_advertiz_social st_video_slide_social_left  float_left">
-									<h3>Profiles</h3>
-									<ul>
-										<li><a href="#"><i class="fa fa-facebook-f"></i></a>
-										</li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a>
-										</li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</div>

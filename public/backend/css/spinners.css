@@ -22,6 +22,11 @@
   right: 0;
   margin: auto;
 }
+label.error {
+    display: inline-block;
+    color:red;
+    width: 200px;
+}
 .path {
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;

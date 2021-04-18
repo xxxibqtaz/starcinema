@@ -86,7 +86,7 @@
                             </div>
                         </div>
                     </form>
-                    <form class="form-horizontal" id="recoverform" action="index.html">
+                    <form class="form-horizontal" id="recoverform" action="index.html" id="fromdk">
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <h3>Lấy lại mật khẩu</h3>
@@ -133,6 +133,8 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="../backend/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
 </body>
 
 </html>

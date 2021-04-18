@@ -17,6 +17,9 @@ class categoryController extends Controller
     }
      public function insertCategory(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => ['required', 'max:255'],
+        ]);
         $category = new Category;
         $category->id = $request->id;
         $category->name = $request->name;

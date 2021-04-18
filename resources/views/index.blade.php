@@ -311,6 +311,8 @@ Author: Webstrot
     <script src="{{asset('/frontend/js/plugin/rs_slider/revolution.extension.slideanims.min.js')}}"></script>
     <script src="{{asset('/frontend/js/plugin/rs_slider/revolution.extension.video.min.js')}}"></script>
     <script src="{{asset('/frontend/js/custom.js')}}"></script>
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0" nonce="NG0q8hFW"></script>
 	<!--main js file end-->
 </body>
 

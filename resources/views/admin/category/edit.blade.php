@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form class="m-t-40" novalidate method="POST" action="" enctype="multipart/form-data">
+                        <form class="m-t-40" novalidate method="POST" action="" enctype="multipart/form-data" id="formvaca">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6">
@@ -32,7 +32,7 @@
                                 <div class="form-group col-md-6">
                                     <h5>Đường dẫn URI<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="uri" id="uri" class="form-control" required value="{{$category->uri}}" >
+                                        <input type="text" name="uri" id="uri" class="form-control"  value="{{$category->uri}}" >
                                     </div>
                                 </div>
                             </div>

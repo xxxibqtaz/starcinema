@@ -32,7 +32,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form class="m-t-40" novalidate method="POST" action="" enctype="multipart/form-data">
+                        <form class="m-t-40" novalidate method="POST" action="" enctype="multipart/form-data" id="formvaca">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6">
