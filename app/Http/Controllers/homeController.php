@@ -45,8 +45,10 @@ class homeController extends Controller
     }
     public function movie()
     {
+        $date=Carbon::today();
         $category = Category::all();
         $movie = Movie::all();
+        $screens = Screen::all();
         return view('client/movie_category', ['category'=>$category, 'movie'=>$movie]);
     }
     public function movie_single($id)

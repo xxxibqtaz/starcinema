@@ -27,32 +27,32 @@
                 <div class="st_calender_tabs">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a data-toggle="tab" href="#home"><span>{{now()->format('D')}}</span>
-                                <br> {{now()->format('d')}}</a>
+                            <a data-toggle="tab" href="#home"><span>{{date('D', strtotime('now + 1day'))}}</span>
+                                <br> {{date('d', strtotime('now + 1day'))}}</a>
                         </li>
                         <li class="nav-item">
-                            <a data-toggle="tab" href="#menu1"> <span>{{date('D', strtotime('now + 1day'))}}</span>
-                                <br>{{date('d', strtotime('now + 1day'))}}</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#menu2"> <span>{{date('D', strtotime('now + 2day'))}}</span>
+                            <a data-toggle="tab" href="#menu1"> <span>{{date('D', strtotime('now + 2day'))}}</span>
                                 <br>{{date('d', strtotime('now + 2day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu3"> <span>{{date('D', strtotime('now + 3day'))}}</span>
+                            <a data-toggle="tab" href="#menu2"> <span>{{date('D', strtotime('now + 3day'))}}</span>
                                 <br>{{date('d', strtotime('now + 3day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu4"> <span>{{date('D', strtotime('now + 4day'))}}</span>
+                            <a data-toggle="tab" href="#menu3"> <span>{{date('D', strtotime('now + 4day'))}}</span>
                                 <br>{{date('d', strtotime('now + 4day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu5"> <span>{{date('D', strtotime('now + 5day'))}}</span>
+                            <a data-toggle="tab" href="#menu4"> <span>{{date('D', strtotime('now + 5day'))}}</span>
                                 <br>{{date('d', strtotime('now + 5day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu6"> <span>{{date('D', strtotime('now + 6day'))}}</span>
+                            <a data-toggle="tab" href="#menu5"> <span>{{date('D', strtotime('now + 6day'))}}</span>
                                 <br>{{date('d', strtotime('now + 6day'))}}</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu6"> <span>{{date('D', strtotime('now + 6day'))}}</span>
+                                <br>{{date('d', strtotime('now + 7day'))}}</a>
                         </li>
                     </ul>
                 </div>
@@ -70,797 +70,331 @@
                                     <div class="tab-content">
                                         <div id="home" class="tab-pane active">
                                             @php
-                                            use App\Screen; use App\Movie;
-                                            use Carbon\Carbon;
-                                            $date=Carbon::today();
-                                            $movie = Movie::all();
-                                            $screens = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(2));
+                                                use App\Screen; use App\Movie;
+                                                use Carbon\Carbon;
+                                                $date=Carbon::today();
+                                                $movie = Movie::all();
+                                                $screens = Screen::all()->where('start_date', '>=' , $date->addDay(1))->where('start_date', '<' , $date->addDay(1));                                        $screenByMovie = Screen::groupByMovie($screens,'id_movie');
                                             @endphp
-                                            @foreach($screens as $item)
+                                            @foreach($screenByMovie as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
                                                 <div class="st_calender_contant_main_wrapper float_left">
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>{{$item->movie?$item->movie->name:'blank'}}</h3>
+                                                        <div class="st_calen_asc_tecket_time_select">
                                                             <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/bill.png')}}">
-                                                                </li>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
+															</span>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>150.000VND</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
-                                            </div>
                                             @endforeach
                                         </div>
-{{--                                        <div id="menu1" class="tab-pane fade">--}}
-{{--                                            @php--}}
-{{--                                                $date=Carbon::today()->addDay(1);--}}
-{{--                                                $screens = Screen::all()->where(['start_date', '>=' , $date],['start_date', '<' , $date->addDay(1)]);--}}
-{{--                                            @endphp--}}
-{{--                                            @dd($date)--}}
-{{--                                            @foreach($screens as $item)--}}
-{{--                                                <div class="st_calender_contant_main_wrapper float_left">--}}
-{{--                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">--}}
-{{--                                                        <div class="st_calender_asc">--}}
-{{--                                                            <div class="st_calen_asc_heart"><a href="#"> <i--}}
-{{--                                                                        class="fa fa-heart"></i></a>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="st_calen_asc_heart_cont">--}}
-{{--                                                                <h3>{{$item->movie?$item->movie->name:'blank'}}</h3>--}}
-{{--                                                                <ul>--}}
-{{--                                                                    <li>--}}
-{{--                                                                        <img--}}
-{{--                                                                            src="{{asset('frontend/images/content/ticket.png')}}">--}}
-{{--                                                                    </li>--}}
-{{--                                                                    <li>--}}
-{{--                                                                        <img--}}
-{{--                                                                            src="{{asset('frontend/images/content/bill.png')}}">--}}
-{{--                                                                    </li>--}}
-{{--                                                                </ul>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="st_calen_asc_tecket_time_select">--}}
-{{--                                                            <ul>--}}
-{{--                                                                <li>	<span>--}}
-{{--															<h4>150.000VND</h4>--}}
-{{--															<p class="asc_pera1">Executive</p>--}}
-{{--															<p class="asc_pera2">Filling Fast</p>--}}
-{{--															</span>--}}
-{{--                                                                    <a href="seat_booking.html">11:30 AM</a>--}}
-{{--                                                                </li>--}}
-{{--                                                                <li>	<span>--}}
-{{--															<h4>Rs.160.00</h4>--}}
-{{--															<p class="asc_pera1">Executive</p>--}}
-{{--															<p class="asc_pera2">Filling Fast</p>--}}
-{{--															</span>--}}
-{{--                                                                    <a href="seat_booking.html">02:45 PM</a>--}}
-{{--                                                                </li>--}}
-{{--                                                                <li>	<span>--}}
-{{--															<h4>Rs.160.00</h4>--}}
-{{--															<p class="asc_pera1">Executive</p>--}}
-{{--															<p class="asc_pera2">Filling Fast</p>--}}
-{{--															</span>--}}
-{{--                                                                    <a href="seat_booking.html">06:30 PM</a>--}}
-{{--                                                                </li>--}}
-{{--                                                            </ul>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            @endforeach                                        </div>--}}
+                                        <div id="menu1" class="tab-pane fade">
+                                            @php
+                                                $screens1 = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(1));
+                                                $screenByMovie1 = Screen::groupByMovie($screens1,'id_movie');
+                                            @endphp
+                                            @foreach($screenByMovie1 as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="st_calen_asc_tecket_time_select">
+                                                            <ul>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
+															</span>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                         <div id="menu2" class="tab-pane fade">
-                                            <div class="st_calender_contant_main_wrapper float_left">
-                                                <div class="st_calender_row_cont float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
+                                            @php
+                                                $screens2 = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(1));
+                                                $screenByMovie2 = Screen::groupByMovie($screens2,'id_movie');
+                                            @endphp
+                                            @foreach($screenByMovie2 as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Ariesplex SL Cinemas</h3>
+                                                        <div class="st_calen_asc_tecket_time_select">
                                                             <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/bill.png')}}">
-                                                                </li>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
+															</span>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">10:00 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Carnival: Artech Mall,<br>
-                                                                Trivandrum</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/bill.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Carnival: Greenfield, <br>
-                                                                Trivandrum</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="st_calender_row_cont st_calender_row_cont2 st_calender_row_cont_last float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Ganga Cine house
-                                                                4K Dolby Atmos: Attingal</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endforeach                                        </div>
                                         <div id="menu3" class="tab-pane fade">
-                                            <div class="st_calender_contant_main_wrapper float_left">
-                                                <div class="st_calender_row_cont float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
+                                            @php
+                                                $screens3 = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(1));
+                                                $screenByMovie3 = Screen::groupByMovie($screens3,'id_movie');
+                                            @endphp
+                                            @foreach($screenByMovie3 as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Ariesplex SL Cinemas</h3>
+                                                        <div class="st_calen_asc_tecket_time_select">
                                                             <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/bill.png')}}">
-                                                                </li>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
+															</span>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">10:00 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Carnival: Artech Mall,<br>
-                                                                Trivandrum</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/bill.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Carnival: Greenfield, <br>
-                                                                Trivandrum</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Carnival: Mall Of Travancore
-                                                                (Red Carpet)</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Dhanya Remya: Trivandrum</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>JV Cinemas: Kattakkada</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>MT Cineplex 4K Dolby
-                                                                ATMOS: Pothencode</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
-                                                    </div>
-                                                </div>
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>SPI: Kripa Cinemas -
-                                                                Mahathma Gandhi Road</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/ticket.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="st_calender_row_cont st_calender_row_cont2 st_calender_row_cont_last float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Ganga Cine house
-                                                                4K Dolby Atmos: Attingal</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="#">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endforeach                                        </div>
                                         <div id="menu4" class="tab-pane fade">
-                                            <div class="st_calender_contant_main_wrapper float_left">
-                                                <div class="st_calender_row_cont float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
+                                            @php
+                                                $screens4 = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(1));
+                                                $screenByMovie4 = Screen::groupByMovie($screens4,'id_movie');
+                                            @endphp
+                                            @foreach($screenByMovie4 as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Ariesplex SL Cinemas</h3>
+                                                        <div class="st_calen_asc_tecket_time_select">
                                                             <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/bill.png')}}">
-                                                                </li>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
+															</span>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">10:00 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
-                                                <div
-                                                    class="st_calender_row_cont st_calender_row_cont2 st_calender_row_cont_last float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"> <i
-                                                                    class="fa fa-heart"></i></a>
+                                            @endforeach                                        </div>
+                                        <div id="menu5" class="tab-pane fade">
+                                            @php
+                                                $screens5 = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(1));
+                                                $screenByMovie5 = Screen::groupByMovie($screens5,'id_movie');
+                                            @endphp
+                                            @foreach($screenByMovie5 as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>Ganga Cine house
-                                                                4K Dolby Atmos: Attingal</h3>
+                                                        <div class="st_calen_asc_tecket_time_select">
                                                             <ul>
-                                                                <li>
-                                                                    <img
-                                                                        src="{{asset('frontend/images/content/fast-food.png')}}">
-                                                                </li>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
+															</span>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
+                                                </div>
+                                            @endforeach                                        </div>
+                                        <div id="menu6" class="tab-pane fade">
+                                            @php
+                                                $screens6 = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date->addDay(1));
+                                                $screenByMovie6 = Screen::groupByMovie($screens6,'id_movie');
+                                            @endphp
+                                            @foreach($screenByMovie6 as $id_movie => $items)
+                                                @php
+                                                    $getMovie = Movie::all()->find($id_movie);
+                                                @endphp
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i
+                                                                        class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{$getMovie->name}}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/ticket.png')}}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img
+                                                                            src="{{asset('frontend/images/content/bill.png')}}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="st_calen_asc_tecket_time_select">
+                                                            <ul>
+                                                                @foreach($items as $item)
+                                                                    <li>
+                                                                        <span>
+															<h4>150.000VND</h4>
+															<p class="asc_pera1">{{$item->getRoom?$item->getRoom->name:""}}</p>
+															<p class="asc_pera2">ĐẶT NGAY</p>
 															</span>
-                                                                <a href="seat_booking.html">11:30 AM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">02:45 PM</a>
-                                                            </li>
-                                                            <li>	<span>
-															<h4>Rs.160.00</h4>
-															<p class="asc_pera1">Executive</p>
-															<p class="asc_pera2">Filling Fast</p>
-															</span>
-                                                                <a href="seat_booking.html">06:30 PM</a>
-                                                            </li>
-                                                        </ul>
-                                                        <p class="asc_bottom_pera">Cancellation Available</p>
+                                                                        <a href="{{URL::to('/seat_booking/'.$item->id)}}">{{Carbon::parse($item->start_date)->format('H:i')}}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            @endforeach                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -877,7 +411,8 @@
                                 <h2>Thể loại</h2>
                                 <ul>
                                     @foreach($category as $item)
-                                        <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="{{URL::to('/movie/'.$item->id)}}">{{$item->name}}</a>
+                                        <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a
+                                                href="{{URL::to('/movie/'.$item->id)}}">{{$item->name}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
