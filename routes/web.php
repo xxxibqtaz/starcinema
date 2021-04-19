@@ -70,3 +70,10 @@ Route::get('/movie/{id}', 'homeController@movie_single');
 Route::get('/seat_booking/{id}', 'homeController@seat_booking');
 
 //Route::resource('screen', screenController::class);
+//banner
+Route::get('/admin/banner', 'bannerController@showBanner');
+Route::get('/admin/banner/add', 'bannerController@addBanner');
+Route::post('/admin/banner/add', 'bannerController@insertBanner');
+Route::get('/admin/banner/edit/{id}', 'bannerController@editBanner');
+Route::post('/admin/banner/edit/{id}', 'bannerController@updateBanner');
+Route::get('/admin/banner/delete/{id}', 'bannerController@deleteBanner');

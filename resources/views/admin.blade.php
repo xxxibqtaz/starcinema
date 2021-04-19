@@ -142,7 +142,7 @@
                                 class="mdi mdi-settings"></i><span class="hide-menu">Cài đặt</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="app-calendar">Chung</a></li>
-                            <li><a href="app-chat">Banner</a></li>
+                            <li><a href="{{URL::to('/admin/banner')}}">Banner</a></li>
                         </ul>
                     </li>
                 </ul>
