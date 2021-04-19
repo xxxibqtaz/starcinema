@@ -222,7 +222,7 @@
 							</div>
 							<div class="prs_upcom_movie_content_box">
 								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="#">{{$item->name}}</a></h2>
+									<h2 class="textone"><a href="#">{{$item->name}}</a></h2>
 									<p>{{$item->category?$item->category->name:'blank'}}</p>	<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
