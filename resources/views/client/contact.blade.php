@@ -269,7 +269,7 @@
         <div class="send-message-wraper">
             <div class="container">
                 <h3 class="contact-text">Liên hệ</h3>
-                <form class="contact-form" method="post" action="/send-mail">
+                <form class="contact-form" method="post" action="{{URL::to('/send-mail')}}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
