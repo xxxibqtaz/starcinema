@@ -173,23 +173,38 @@ Author: Webstrot
 	<div class="prs_footer_main_section_wrapper">
 		<div class="container">
 			<div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_3">
+						<h2>startcinema</h2>
+
+						<ul>
+							<li><i class="fa fa-circle"></i>  Liên hệ: 1900 6017
+							</li>
+							<li><i class="fa fa-circle"></i>   Thời gian: 8:00 - 22:00
+							</li>
+							<li><i class="fa fa-circle"></i> Email: startmoviep@cgv.vn
+							</li>
+
+						</ul>
+					</div>
+				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_2">
 						<h2>Thể Loại Phim</h2>
-						<ul>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim hành động</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim lãng mạn</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim hài</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim truyền hình</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim nhạc kịch</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim cổ điển</a>
-							</li>
-						</ul>
+                        <ul>
+                        @php
+                        use App\Category;
+                        $category = Category::all();
+
+
+                            foreach ($category as $item) {
+                                echo'<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="'.$item->url.'">'.$item->name.'</a>
+							</li>';
+                            }
+
+                        @endphp
+                        </ul>
+
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

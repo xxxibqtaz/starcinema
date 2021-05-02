@@ -22,24 +22,18 @@
                         <form class="m-t-40" novalidate method="POST" action="" enctype="multipart/form-data" id="formvaca">
                             @csrf
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <h5>Tên banner<span class="text-danger">*</span></h5>
+
+                                <div class="form-group col-md-12">
+                                    <h5>Trạng thái<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="name" id="name" class="form-control" required
-                                               data-validation-required-message="This field is required" value="{{$category->name}}">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <h5>Đường dẫn URI<span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <input type="text" name="uri" id="uri" class="form-control"  value="{{$category->uri}}" >
+                                        <input type="text" name="status" id="uri" class="form-control"  value="{{$banner->status}}" >
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <h5>Hình ảnh<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="file" id="input-file-now-custom-1" name="image" class="form-control dropify" data-default-file="{{asset('/upload/'.$category->image)}}" value="{{$category->name}}"/>
+                                    <input type="file" id="input-file-now-custom-1" name="image" class="form-control dropify" data-default-file="{{asset('/upload/'.$banner->image)}}" />
                                 </div>
                             </div>
                             <div class="text-xs-right">

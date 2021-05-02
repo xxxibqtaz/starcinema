@@ -19,18 +19,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+
                         <form class="m-t-40" novalidate method="POST" action="" enctype="multipart/form-data" id="formvaca">
                             @csrf
                             <div class="row">
-                            <div class="form-group col-md-6">
-                                <h5>id<span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="id" id="id" class="form-control" required
-                                           data-validation-required-message="This field is required">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <h5>trạng thái<span class="text-danger">*</span></h5>
+
+                            <div class="form-group col-md-12">
+                                <h5>Trạng thái<span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="text" name="status" id="uri" class="form-control" >
                                 </div>

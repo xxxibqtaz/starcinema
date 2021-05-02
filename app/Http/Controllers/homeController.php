@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Category;
-
+use App\Blog;
 use App\Movie;
 use App\Screen;
 use Carbon\Carbon;
-
+use App\Banner;
 use Illuminate\Http\Request;
 
 class homeController extends Controller
@@ -19,7 +19,11 @@ class homeController extends Controller
         $movie_release = Movie::all()->where('release_date', '<' , Carbon::today()->addMonth());
         //phim noi bat
         $movie_special =  Movie::all()->where('rating', '>', 3);
-        return view('client/home',  ['movie_upcoming' => $movie_upcoming, 'movie_release' => $movie_release, 'movie_special' => $movie_special] );
+         //show banner
+         $banner = Banner::all();
+        return view('client/home',  ['movie_upcoming' => $movie_upcoming, 'movie_release' => $movie_release, 'movie_special' => $movie_special],['banner'=>$banner] );
+
+
     }
     public function about()
     {
@@ -31,25 +35,31 @@ class homeController extends Controller
     }
     public function blog()
     {
-        return view('client/blog_category');
+        $blog = Blog::all();
+
+        return view('client/blog_category',['blog'=>$blog]);
     }
     public function blog_single()
     {
+
         return view('client/blog_single');
     }
     public function movie_booking()
     {
 //        $room = Room::all();
         $category = Category::all();
+
         return view('client/movie_booking', ['category'=>$category]);
     }
     public function movie()
     {
+
         $date=Carbon::today();
         $category = Category::all();
         $movie = Movie::all();
         $screens = Screen::all();
-        return view('client/movie_category', ['category'=>$category, 'movie'=>$movie]);
+        $banner = Banner::all();
+        return view('client/movie_category', ['category'=>$category, 'movie'=>$movie],['banner'=>$banner] );
     }
     public function movie_single($id)
     {
@@ -67,4 +77,5 @@ class homeController extends Controller
         $search_pro= Movie::where('name','LIKE','%'.$keywords.'%')->get();
         return view('client/search',['search_pro'=> $search_pro]);
     }
+
 }

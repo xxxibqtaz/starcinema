@@ -37,7 +37,18 @@
                                         <td>{{$item->id}}</td>
 
                                         <td><img src="{{asset('/upload/'.$item->image)}}" alt="" width="50px"></td>
-                                        <td>{{$item->status}}</td>
+                                        @php
+                                            if($item->status==1)
+
+                                                {
+                                                    $status = "Kích hoạt";
+                                                }else {
+                                                    $status = "ẩn";
+                                                }
+                                        @endphp
+                                        <td>{{$status}}</td>
+
+
                                         <td class="text-nowrap">
                                             <a href="{{URL::to('/admin/banner/edit/'.$item->id)}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                                             <a href="{{URL::to('/admin/banner/delete/'.$item->id)}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i> </a>

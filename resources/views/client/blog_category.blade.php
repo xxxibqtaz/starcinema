@@ -7,11 +7,11 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="prs_title_heading_wrapper">
-						<h2>Blog categories</h2>
+						<h2>Tin Tức</h2>
 						<ul>
-							<li><a href="#">Home</a>
+							<li><a href="{{URL::to('/home')}}">Trang chủ</a>
 							</li>
-							<li>&nbsp;&nbsp; >&nbsp;&nbsp; Blog</li>
+							<li>&nbsp;&nbsp; >&nbsp;&nbsp; Tin Tức</li>
 						</ul>
 					</div>
 				</div>
@@ -26,21 +26,23 @@
 				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 					<div class="hs_blog_left_sidebar_main_wrapper">
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            @foreach ($blog as $item)
+
+
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
 								<div class="hs_blog_box1_main_wrapper">
 									<div class="hs_blog_box1_img_wrapper">
-										<img src="{{asset('frontend/images/content/blog_category/b1.jpg')}}" alt="blog_img">
+										<img src="{{asset('/upload/'.$item->image)}}" alt="blog_img">
 									</div>
 									<div class="hs_blog_box1_cont_main_wrapper">
 										<div class="hs_blog_cont_heading_wrapper">
 											<ul>
-												<li>March 07, 2018</li>
+												<li>{{$item->release_date}}</li>
 												<li>by Admin</li>
 											</ul>
-											<h2>Simplicity is about subtracting the obvious and adding part area  of 
-the meaningful</h2>
-											<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-											<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
+											<h2>{{$item->title}}</h2>
+											<p>{{$item->preview}}</p>
+											<h5><a href="{{url::to('/blog/'.$item->id)}}">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
 										</div>
 									</div>
 									<div class="hs_blog_box1_bottom_cont_main_wrapper">
@@ -69,150 +71,7 @@ the meaningful</h2>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper">
-									<div class="hs_blog_box1_img_wrapper">
-										<div class="owl-carousel owl-theme">
-											<div class="item">
-												<img src="{{asset('frontend/images/content/blog_category/b1.jpg')}}" alt="blog_img">
-											</div>
-											<div class="item">
-												<img src="{{asset('frontend/images/content/blog_category/b2.jpg')}}" alt="blog_img">
-											</div>
-											<div class="item">
-												<img src="{{asset('frontend/images/content/blog_category/b3.jpg')}}" alt="blog_img">
-											</div>
-										</div>
-									</div>
-									<div class="hs_blog_box1_cont_main_wrapper">
-										<div class="hs_blog_cont_heading_wrapper">
-											<ul>
-												<li>March 07, 2018</li>
-												<li>by Admin</li>
-											</ul>
-											<h2>Simplicity is about subtracting the obvious and adding part area  of 
-the meaningful</h2>
-											<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-											<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-										</div>
-									</div>
-									<div class="hs_blog_box1_bottom_cont_main_wrapper">
-										<div class="hs_blog_box1_bottom_cont_left">
-											<ul>
-												<li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-												</li>
-												<li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-												</li>
-												<li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-												</li>
-											</ul>
-										</div>
-										<div class="hs_blog_box1_bottom_cont_right">
-											<ul>
-												<li><a href="#"><i class="fa fa-facebook"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-youtube-play"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-linkedin"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-twitter"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper">
-									<div class="hs_blog_box1_img_wrapper">
-										<img src="{{asset('frontend/images/content/blog_category/b3.jpg')}}" alt="blog_img">
-										<div class="prs_ms_scene_img_overlay">
-											<ul>
-												<li><a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="hs_blog_box1_cont_main_wrapper">
-										<div class="hs_blog_cont_heading_wrapper">
-											<ul>
-												<li>March 07, 2018</li>
-												<li>by Admin</li>
-											</ul>
-											<h2>Simplicity is about subtracting the obvious and adding part area  of the meaningful</h2>
-											<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-											<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-										</div>
-									</div>
-									<div class="hs_blog_box1_bottom_cont_main_wrapper">
-										<div class="hs_blog_box1_bottom_cont_left">
-											<ul>
-												<li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-												</li>
-												<li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-												</li>
-												<li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-												</li>
-											</ul>
-										</div>
-										<div class="hs_blog_box1_bottom_cont_right">
-											<ul>
-												<li><a href="#"><i class="fa fa-facebook"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-youtube-play"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-linkedin"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-twitter"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper">
-									<div class="hs_blog_box1_img_wrapper">
-										<iframe src="https://www.youtube.com/embed/tqYDVMTjAzY"></iframe>
-									</div>
-									<div class="hs_blog_box1_cont_main_wrapper">
-										<div class="hs_blog_cont_heading_wrapper">
-											<ul>
-												<li>March 07, 2018</li>
-												<li>by Admin</li>
-											</ul>
-											<h2>Simplicity is about subtracting the obvious and adding part area  of 
-the meaningful</h2>
-											<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-											<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-										</div>
-									</div>
-									<div class="hs_blog_box1_bottom_cont_main_wrapper">
-										<div class="hs_blog_box1_bottom_cont_left">
-											<ul>
-												<li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-												</li>
-												<li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-												</li>
-												<li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-												</li>
-											</ul>
-										</div>
-										<div class="hs_blog_box1_bottom_cont_right">
-											<ul>
-												<li><a href="#"><i class="fa fa-facebook"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-youtube-play"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-linkedin"></i></a>
-												</li>
-												<li><a href="#"><i class="fa fa-twitter"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
+                            @endforeach
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="pager_wrapper prs_blog_pagi_wrapper">
 									<ul class="pagination">
@@ -241,33 +100,7 @@ the meaningful</h2>
 							<button><i class="flaticon-tool"></i>
 							</button>
 						</div>
-						<div class="prs_bc_right_about_wrapper">
-							<img src="{{asset('frontend/images/content/blog_category/side_img1.jpg')}}" alt="side_img">
-							<h2>About Presenter</h2>
-							<p>Lorem ipsum dolor sit amet ue adipisicing elit, sed do eiuodor incididunt ut part.</p>
-							<h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-						</div>
-						<div class="prs_mcc_bro_title_wrapper">
-							<h2>Category</h2>
-							<ul>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">All <span>23,124</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Action <span>512</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Romantic <span>548</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Love <span>557</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Musical <span>554</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Drama <span>567</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Thriller <span>689</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Horror <span>478</span></a> 
-								</li>
-							</ul>
-						</div>
+
 						<div class="prs_mcc_bro_title_wrapper">
 							<h2>Recent News</h2>
 							<div class="hs_blog_right_recnt_cont_wrapper">
@@ -301,25 +134,7 @@ menus.</h4>
 								</div>
 							</div>
 						</div>
-						<div class="prs_mcc_bro_title_wrapper">
-							<h2>Archives</h2>
-							<ul>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2012 <span>23,124</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2013 <span>512</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2014 <span>548</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2015 <span>557</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2016 <span>554</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2017 <span>567</span></a> 
-								</li>
-								<li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2018 <span>689</span></a> 
-								</li>
-							</ul>
-						</div>
+
 						<div class="prs_blog_right_sub_btn_wrapper">
 							<h2>Subscribe</h2>
 							<input type="text" placeholder="Your email id">

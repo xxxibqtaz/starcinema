@@ -17,12 +17,8 @@ class bannerController extends Controller
     }
      public function insertBanner(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'max:255'],
-        ]);
-        $banner = new Banner;
-        $banner->id = $request->id;
 
+        $banner = new Banner;
         $banner->status = $request->status;
         $get_img = $request->file('image');
         if (isset($get_img)) {
@@ -41,8 +37,6 @@ class bannerController extends Controller
     public function updateBanner(Request $request,$id)
     {
         $banner = Banner::find($id);
-        $banner->id = $request->id;
-
         $banner->status = $request->status;
         $get_img = $request->file('image');
         if (isset($get_img)) {

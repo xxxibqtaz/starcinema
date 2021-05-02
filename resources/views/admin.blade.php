@@ -124,6 +124,8 @@
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{URL::to('/admin/movie')}}">Tất cả phim</a></li>
                             <li><a href="{{URL::to('/admin/category')}}">Danh mục phim</a></li>
+                            <li><a href="{{URL::to('/admin/blog')}}">Tất cả tin tức</a></li>
+                            <li><a href="{{URL::to('/admin/banner')}}">Quản lý banner</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow waves-effect" href="{{URL::to('/admin/room')}}" aria-expanded="false"><i

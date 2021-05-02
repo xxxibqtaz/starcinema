@@ -53,6 +53,7 @@ Route::get('/admin/profile/delete/{id}', 'userController@deleteProfile');
 //client layout
 Route::get('/', 'homeController@home');
 Route::get('/home', 'homeController@home');
+
 Route::get('/about', 'homeController@about');
 Route::get('/blog', 'homeController@blog');
 Route::get('/blog_single', 'homeController@blog_single');
@@ -77,3 +78,11 @@ Route::post('/admin/banner/add', 'bannerController@insertBanner');
 Route::get('/admin/banner/edit/{id}', 'bannerController@editBanner');
 Route::post('/admin/banner/edit/{id}', 'bannerController@updateBanner');
 Route::get('/admin/banner/delete/{id}', 'bannerController@deleteBanner');
+//blog
+Route::get('/admin/blog', 'blogController@showBlog');
+Route::get('/admin/blog/add', 'blogController@addBlog');
+Route::post('/admin/blog/add', 'blogController@insertBlog');
+Route::get('/admin/blog/edit/{id}', 'blogController@editBlog');
+Route::post('/admin/blog/edit/{id}', 'blogController@updateBlog');
+Route::get('/admin/blog/delete/{id}', 'blogController@deleteBlog');
+

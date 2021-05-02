@@ -31,15 +31,14 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="prs_mc_slider_wrapper">
 						<div class="owl-carousel owl-theme">
-							<div class="item">
-								<img src="{{asset('frontend/images/content/movie_category/slider_img1.jpg')}}" alt="about_img">
+                            @foreach ($banner as $item)
+
+
+							<div class="item fiximage">
+								<img src="{{asset('/upload/'.$item->image)}}" alt="about_img">
 							</div>
-							<div class="item">
-								<img src="{{asset('frontend/images/content/movie_category/slider_img2.jpg')}}" alt="about_img">
-							</div>
-							<div class="item">
-								<img src="{{asset('frontend/images/content/movie_category/slider_img3.jpg')}}" alt="about_img">
-							</div>
+
+                            @endforeach
 						</div>
 					</div>
 				</div>

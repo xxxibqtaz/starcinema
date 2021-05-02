@@ -35,6 +35,14 @@ body, html {
 	padding-right:0 !important;
 	overflow-x:hidden;
 }
+.fiximage{
+    height: 500px;
+}
+.mb30{
+    margin-bottom: 30px;
+}
+
+
 body::-webkit-scrollbar-track{
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #ffffff;
