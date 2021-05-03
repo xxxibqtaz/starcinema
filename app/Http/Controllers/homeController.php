@@ -53,19 +53,13 @@ class homeController extends Controller
     }
     public function movie()
     {
-<<<<<<< Updated upstream
-
-        $date=Carbon::today();
+//        $date=Carbon::today();
         $category = Category::all();
         $movie = Movie::all();
-        $screens = Screen::all();
+//        $screens = Screen::all();
         $banner = Banner::all();
         return view('client/movie_category', ['category'=>$category, 'movie'=>$movie],['banner'=>$banner] );
-=======
-        $category = Category::all();
-        $movie = Movie::all();
-        return view('client/movie_category', ['category'=>$category, 'movie'=>$movie]);
->>>>>>> Stashed changes
+
     }
     public function movie_single($id)
     {

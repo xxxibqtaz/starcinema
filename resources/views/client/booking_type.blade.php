@@ -137,10 +137,16 @@ use Carbon\Carbon;
             $("#total").html((data.length*150000).toLocaleString('vi', {style : 'currency', currency : 'VND'}));
             $('#total_hidden').val(data.length*150000);
 
-            // $('body').on('click', '#paypal', function () {
-            //     $('#form_create').submit();
-            //     // window.location.href = 'tao-van-don';
-            // });
+            $('body').on('click', '#paypal', function () {
+                $.ajax({
+                    type: 'post',
+                    url: 'booking_type',
+                    data: $('#form_create').serialize()
+                    alert(1);
+                });
+                $('#form_create').submit();
+                // window.location.href = 'tao-van-don';
+            });
         });
 		    function protfolioIsotope(){
 		        if ( $('.st_fb_filter_left_box_wrapper').length ){
