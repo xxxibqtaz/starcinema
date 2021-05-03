@@ -42,7 +42,7 @@
 											</ul>
 											<h2>{{$item->title}}</h2>
 											<p>{{$item->preview}}</p>
-											<h5><a href="{{url::to('/blog/'.$item->id)}}">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
+											<h5><a href="{{url::to('/blog/'.$item->id)}}">Xem thêm <i class="fa fa-long-arrow-right"></i></a></h5>
 										</div>
 									</div>
 									<div class="hs_blog_box1_bottom_cont_main_wrapper">
@@ -101,39 +101,8 @@
 							</button>
 						</div>
 
-						<div class="prs_mcc_bro_title_wrapper">
-							<h2>Recent News</h2>
-							<div class="hs_blog_right_recnt_cont_wrapper">
-								<div class="hs_footer_ln_img_wrapper">
-									<img src="{{asset('frontend/images/content/blog_category/n1.jpg')}}" alt="ln_img" />
-								</div>
-								<div class="hs_footer_ln_cont_wrapper">
-									<h4>Lorem spum
-menus.</h4>
-									<p>12 May 2018</p>
-								</div>
-							</div>
-							<div class="hs_blog_right_recnt_cont_wrapper hs_blog_right_recnt_cont_wrapper2">
-								<div class="hs_footer_ln_img_wrapper">
-									<img src="{{asset('frontend/images/content/blog_category/n2.jpg')}}" alt="ln_img" />
-								</div>
-								<div class="hs_footer_ln_cont_wrapper">
-									<h4>Lorem spum
-menus.</h4>
-									<p>12 May 2018</p>
-								</div>
-							</div>
-							<div class="hs_blog_right_recnt_cont_wrapper hs_blog_right_recnt_cont_wrapper2">
-								<div class="hs_footer_ln_img_wrapper">
-									<img src="{{asset('frontend/images/content/blog_category/n3.jpg')}}" alt="ln_img" />
-								</div>
-								<div class="hs_footer_ln_cont_wrapper">
-									<h4>Lorem spum
-menus.</h4>
-									<p>12 May 2018</p>
-								</div>
-							</div>
-						</div>
+
+
 
 						<div class="prs_blog_right_sub_btn_wrapper">
 							<h2>Subscribe</h2>
