@@ -55,13 +55,13 @@ class homeController extends Controller
     }
     public function movie()
     {
-
-        $date=Carbon::today();
+//        $date=Carbon::today();
         $category = Category::all();
         $movie = Movie::all();
-        $screens = Screen::all();
+//        $screens = Screen::all();
         $banner = Banner::all();
         return view('client/movie_category', ['category'=>$category, 'movie'=>$movie],['banner'=>$banner] );
+
     }
     public function movie_single($id)
     {
@@ -69,9 +69,20 @@ class homeController extends Controller
         $movie_relative = Movie::all()->where('id_category',$movie['id_category']);
         return view('client/movie_single_second', ['movie' => $movie, 'movie_relative' => $movie_relative]);
     }
-    public function seat_booking()
+    public function seat_booking($id)
     {
-        return view('client/seat_booking');
+        $screen = Screen::find($id);
+        return view('client/seat_booking', ['screen' => $screen]);
+    }
+    public function booking_type($id)
+    {
+        $screen = Screen::find($id);
+        return view('client/booking_type', ['screen' => $screen]);
+    }
+    public function confirmation_screen()
+    {
+//        $screen = Screen::find($id);
+        return view('client/confirmation_screen');
     }
     public function searchMovie( Request $request)
     {
