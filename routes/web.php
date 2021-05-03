@@ -56,7 +56,8 @@ Route::get('/home', 'homeController@home');
 
 Route::get('/about', 'homeController@about');
 Route::get('/blog', 'homeController@blog');
-Route::get('/blog_single', 'homeController@blog_single');
+Route::get('/blog/{id}', 'homeController@blog_single');
+
 Route::get('/about', 'homeController@about');
 Route::get('/contact', 'homeController@contact');
 Route::post('/search', 'homeController@searchMovie');

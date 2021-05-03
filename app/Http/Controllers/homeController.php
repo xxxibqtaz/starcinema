@@ -37,13 +37,15 @@ class homeController extends Controller
     public function blog()
     {
         $blog = Blog::all();
-
+        //blog
         return view('client/blog_category',['blog'=>$blog]);
     }
-    public function blog_single()
+    public function blog_single($id)
     {
-
-        return view('client/blog_single');
+        $blog = Blog::find($id);
+        //blog mới nhất
+        $blognew = Blog::all();
+        return view('client/blog_single',['blog'=>$blog], ['blognew'=>$blognew]);
     }
     public function movie_booking()
     {

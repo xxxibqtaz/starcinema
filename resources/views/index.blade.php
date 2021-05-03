@@ -182,7 +182,25 @@ Author: Webstrot
 							</li>
 							<li><i class="fa fa-circle"></i>   Thời gian: 8:00 - 22:00
 							</li>
-							<li><i class="fa fa-circle"></i> Email: startmoviep@cgv.vn
+							<li><i class="fa fa-circle"></i> Email: startcinema@cgv.vn
+							</li>
+
+						</ul>
+					</div>
+				</div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_3">
+						<h2>Danh Mục</h2>
+						<ul>
+							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="{{URL::to('/home')}}">Trang chủ</a>
+							</li>
+							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="{{URL::to('/about')}}">Giới Thiệu</a>
+							</li>
+							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="{{URL::to('/movie')}}">Phim</a>
+							</li>
+							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="{{URL::to('/blog')}}">Tin Tức </a>
+							</li>
+							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="{{URL::to('/contact')}}">Liên hệ</a>
 							</li>
 
 						</ul>
@@ -207,31 +225,11 @@ Author: Webstrot
 
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_3">
-						<h2>BOOKING ONLINE</h2>
-						<ul>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
-							</li>
-							<li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_4">
 						<h2>App available on</h2>
-						<p>Download App and Get Free Movie Ticket !</p>
+						<p>Tải xuống ứng dụng và nhận vé xem phim miễn phí! !</p>
 						<ul>
 							<li>
 								<a href="#">
