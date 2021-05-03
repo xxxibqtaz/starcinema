@@ -27,32 +27,32 @@
                 <div class="st_calender_tabs">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a data-toggle="tab" href="#home"><span>{{date('D', strtotime('now + 1day'))}}</span>
-                                <br> {{date('d', strtotime('now + 1day'))}}</a>
+                            <a data-toggle="tab" href="#home"><span>{{date('D', strtotime('now'))}}</span>
+                                <br> {{date('d', strtotime('now'))}}</a>
                         </li>
                         <li class="nav-item">
-                            <a data-toggle="tab" href="#menu1"> <span>{{date('D', strtotime('now + 2day'))}}</span>
+                            <a data-toggle="tab" href="#menu1"> <span>{{date('D', strtotime('now + 1day'))}}</span>
+                                <br>{{date('d', strtotime('now + 1day'))}}</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu2"> <span>{{date('D', strtotime('now + 2day'))}}</span>
                                 <br>{{date('d', strtotime('now + 2day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu2"> <span>{{date('D', strtotime('now + 3day'))}}</span>
+                            <a data-toggle="tab" href="#menu3"> <span>{{date('D', strtotime('now + 3day'))}}</span>
                                 <br>{{date('d', strtotime('now + 3day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu3"> <span>{{date('D', strtotime('now + 4day'))}}</span>
+                            <a data-toggle="tab" href="#menu4"> <span>{{date('D', strtotime('now + 4day'))}}</span>
                                 <br>{{date('d', strtotime('now + 4day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu4"> <span>{{date('D', strtotime('now + 5day'))}}</span>
+                            <a data-toggle="tab" href="#menu5"> <span>{{date('D', strtotime('now + 5day'))}}</span>
                                 <br>{{date('d', strtotime('now + 5day'))}}</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#menu5"> <span>{{date('D', strtotime('now + 6day'))}}</span>
-                                <br>{{date('d', strtotime('now + 6day'))}}</a>
-                        </li>
-                        <li>
                             <a data-toggle="tab" href="#menu6"> <span>{{date('D', strtotime('now + 6day'))}}</span>
-                                <br>{{date('d', strtotime('now + 7day'))}}</a>
+                                <br>{{date('d', strtotime('now + 6day'))}}</a>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +74,7 @@
                                                 use Carbon\Carbon;
                                                 $date=Carbon::today();
                                                 $movie = Movie::all();
-                                                $screens = Screen::all()->where('start_date', '>=' , $date->addDay(1))->where('start_date', '<' , $date->addDay(1));                                        $screenByMovie = Screen::groupByMovie($screens,'id_movie');
+                                                $screens = Screen::all()->where('start_date', '>=' , $date)->where('start_date', '<' , $date);                                        $screenByMovie = Screen::groupByMovie($screens,'id_movie');
                                             @endphp
                                             @foreach($screenByMovie as $id_movie => $items)
                                                 @php

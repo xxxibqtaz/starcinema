@@ -69,6 +69,9 @@ Route::get('/movie', 'homeController@movie');
 Route::get('/movie/{id}', 'homeController@movie_single');
 //dat ve ghe
 Route::get('/seat_booking/{id}', 'homeController@seat_booking');
+Route::get('/booking_type/{id}', 'homeController@booking_type');
+Route::post('/booking_type', 'bookingController@store');
+Route::get('/confirmation_screen', 'homeController@confirmation_screen');
 
 //Route::resource('screen', screenController::class);
 //banner
