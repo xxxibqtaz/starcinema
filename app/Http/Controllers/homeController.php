@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Booking;
 use App\Category;
 use App\Blog;
 use App\Movie;
@@ -77,10 +78,11 @@ class homeController extends Controller
         $screen = Screen::find($id);
         return view('client/booking_type', ['screen' => $screen]);
     }
-    public function confirmation_screen()
+    public function confirmation_screen($id)
     {
 //        $screen = Screen::find($id);
-        return view('client/confirmation_screen');
+        $booking = Booking::find($id);
+        return view('client/confirmation_screen', ['booking' => $booking]);
     }
     public function searchMovie( Request $request)
     {

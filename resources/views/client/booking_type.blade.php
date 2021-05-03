@@ -90,12 +90,13 @@ use Carbon\Carbon;
 		</div>
 	</div>
 
-<form action="{{URL::to('/booking_type')}}" method="POST" id="form-create" hidden>
+<form action="{{URL::to('/booking_type/'.$screen->id)}}" method="POST" id="form-create" hidden>
     {{ csrf_field() }}
     <input name="id_user" value="{{ $user->id }}">
     <input name="id_screen" value="{{ $screen->id }}">
 {{--    <input name="id_coupon" value="{{ $coupon }}">--}}
     <input name="total" id="total_hidden">
+    <input type="submit" id="submit_button">
 </form>
 	<!-- st dtts section End -->
 	<!--main js file start-->
@@ -138,13 +139,7 @@ use Carbon\Carbon;
             $('#total_hidden').val(data.length*150000);
 
             $('body').on('click', '#paypal', function () {
-                $.ajax({
-                    type: 'post',
-                    url: 'booking_type',
-                    data: $('#form_create').serialize()
-                    alert(1);
-                });
-                $('#form_create').submit();
+                $("#submit_button").click();
                 // window.location.href = 'tao-van-don';
             });
         });

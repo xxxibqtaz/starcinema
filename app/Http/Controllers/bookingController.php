@@ -39,7 +39,8 @@ class bookingController extends Controller
         $booking->id_user = $request->id_user;
         $booking->id_screen = $request->id_screen;
         $booking->total_cost = $request->total;
-        die(1);
+        $booking->save();
+        return redirect('/confirmation_screen/'.$booking->id);
     }
 
     /**
